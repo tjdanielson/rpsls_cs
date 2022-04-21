@@ -13,6 +13,10 @@ namespace RPSLS_CS
             Human tessa = new Human();
 
             tessa.ChooseGesture();
+
+            Robot robot = new Robot();
+
+            robot.ChooseGesture();
         }
     }
 }
