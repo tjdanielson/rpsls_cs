@@ -23,15 +23,16 @@ namespace RPSLS_CS
         {
             Console.WriteLine("Welcome to RPSLS!");
             bool play_type = this.IsSinglePlayer();
+            // this isnt going to work since its strongly typed. need a new way to switch between single/multi player
             if (play_type)
-            {
-                Human playerTwo = new Human();
-            }
-            else
             {
                 Robot playerTwo = new Robot();
             }
-            while (this.playerOne.score < 2 && playerTwo.score < 2)
+            else
+            {
+                Human playerTwo = new Human();
+            }
+            while (this.playerOne.score < 2 && playerTwo.score < 2) ;
 
         }
 
