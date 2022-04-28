@@ -10,13 +10,12 @@ namespace RPSLS_CS
     {
         //member variables
         Human playerOne;
-        Player playerTwo;
+
 
         //constructor
         public RunGame()
         {
             this.playerOne = new Human();
-            this.playerTwo = new Player();
             this.PlayGame();
         }
 
@@ -26,19 +25,21 @@ namespace RPSLS_CS
         {
             Console.WriteLine("Welcome to RPSLS!");
             bool play_type = this.IsSinglePlayer();
+            var player_Two = (Object)null;
             if (play_type)
             {
-                Robot playerTwo = (Robot) this.playerTwo;
+                player_Two = new Robot();
                 Console.WriteLine("Player Two is a Robot");
+                
             }
             else
             {
-                Human playerTwo = (Human) this.playerTwo;
+                Human player_Two = new Human();
                 Console.WriteLine("Player Two is a Human");
             }
             while (this.playerOne.score < 2 && playerTwo.score < 2)
             {
-                var winner = this.CompareGestures(this.playerOne.ChooseGesture(), this.playerTwo.ChooseGesture());
+                var winner = this.CompareGestures(this.playerOne.ChooseGesture(), player_Two.ChooseGesture());
                 if (winner == "Player 1")
                 {
                     this.playerOne.score++;
@@ -46,7 +47,7 @@ namespace RPSLS_CS
                 }
                 else if (winner == "Player 2")
                 {
-                    this.playerTwo.score++;
+                    playerTwo.score++;
                     Console.WriteLine("This round is won by Player Two!!");
                 }
                 else
