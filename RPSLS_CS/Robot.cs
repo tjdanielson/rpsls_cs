@@ -22,5 +22,13 @@ namespace RPSLS_CS
             Console.WriteLine($"The robot picked: {randomNumber} - {this.gestures[randomNumber]} ");
             return randomNumber;
         }
+
+        public object Convert(Player player)
+        {
+            this.score = player.score;
+            this.gestures = player.gestures;
+
+            return player;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace RPSLS_CS
             }
             while (!input.Equals("0") && !input.Equals("1") && !input.Equals("2") && !input.Equals("3") && !input.Equals("4") && !input.Equals("5"));
             int playerChoice = int.Parse(input);
-            Console.Write($"Your choice is: {playerChoice} - {this.gestures[playerChoice]}");
+            Console.WriteLine($"Your choice is: {playerChoice} - {this.gestures[playerChoice]}");
             return playerChoice;
         }
         

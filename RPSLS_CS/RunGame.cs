@@ -10,75 +10,66 @@ namespace RPSLS_CS
     {
         //member variables
         Human playerOne;
-
+        Human playerTwo;
 
         //constructor
         public RunGame()
         {
             this.playerOne = new Human();
+            this.playerTwo = new Human();
             this.PlayGame();
         }
 
 
         //membermethods
+
         public void PlayGame()
         {
-            Console.WriteLine("Welcome to RPSLS!");
-            bool play_type = this.IsSinglePlayer();
-            var player_Two = (Object)null;
-            if (play_type)
-            {
-                player_Two = new Robot();
-                Console.WriteLine("Player Two is a Robot");
-                
-            }
-            else
-            {
-                Human player_Two = new Human();
-                Console.WriteLine("Player Two is a Human");
-            }
             while (this.playerOne.score < 2 && playerTwo.score < 2)
             {
-                var winner = this.CompareGestures(this.playerOne.ChooseGesture(), player_Two.ChooseGesture());
+                var winner = this.CompareGestures(this.playerOne.ChooseGesture(), playerTwo.ChooseGesture());
                 if (winner == "Player 1")
                 {
                     this.playerOne.score++;
                     Console.WriteLine("This round is won by Player One!!");
+                    Console.WriteLine("****************************************************");
                 }
                 else if (winner == "Player 2")
                 {
                     playerTwo.score++;
                     Console.WriteLine("This round is won by Player Two!!");
+                    Console.WriteLine("****************************************************");
                 }
                 else
                 {
                     Console.WriteLine("This round was a tie!!");
+                    Console.WriteLine("****************************************************");
                 }
             };
-
+            DisplayWinner();
         }
 
-        public bool IsSinglePlayer()
-        {
-            string input;
-            do
-            {
-                Console.WriteLine();
-                Console.WriteLine("Enter 1 for single player game, 2 for multi-player game: ");
-                input = Console.ReadLine();
-            }
-            while (!input.Equals("1") && !input.Equals("2"));
-            bool singlePlayer;
-            if (input.Equals("1"))
-            {
-                singlePlayer = true;
-            }
-            else
-            {
-                singlePlayer = false;
-            }
-            return singlePlayer;
-        }
+        //public bool IsSinglePlayer()
+        //{
+        //    string input;
+        //    do
+        //    {
+        //        Console.WriteLine();
+        //        Console.WriteLine("Enter 1 for single player game, 2 for multi-player game: ");
+        //        input = Console.ReadLine();
+        //    }
+        //    while (!input.Equals("1") && !input.Equals("2"));
+        //    bool singlePlayer;
+        //    if (input.Equals("1"))
+        //    {
+        //        singlePlayer = true;
+        //    }
+        //    else
+        //    {
+        //        singlePlayer = false;
+        //    }
+        //    return singlePlayer;
+        //}
 
         public string CompareGestures(int gesture1, int gesture2)
         {
@@ -116,6 +107,8 @@ namespace RPSLS_CS
 
         public void DisplayWinner()
         {
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("GAME RESULTS:");
             if (this.playerOne.score > this.playerTwo.score)
             {
                 Console.WriteLine("Player One Wins the Game!!");
