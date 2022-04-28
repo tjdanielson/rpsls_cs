@@ -10,13 +10,17 @@ namespace RPSLS_CS
     {
         static void Main(string[] args)
         {
-            Human tessa = new Human();
+            
 
-            tessa.ChooseGesture();
+            RunGame game = new RunGame();
+            
+            //Human tessa = new Human();
 
-            Robot robot = new Robot();
+            //tessa.ChooseGesture();
 
-            robot.ChooseGesture();
+            //Robot robot = new Robot();
+
+            //robot.ChooseGesture();
         }
     }
 }

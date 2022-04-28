@@ -10,11 +10,14 @@ namespace RPSLS_CS
     {
         //member variables
         Human playerOne;
+        Player playerTwo;
 
         //constructor
         public RunGame()
         {
             this.playerOne = new Human();
+            this.playerTwo = new Player();
+            this.PlayGame();
         }
 
 
@@ -23,16 +26,34 @@ namespace RPSLS_CS
         {
             Console.WriteLine("Welcome to RPSLS!");
             bool play_type = this.IsSinglePlayer();
-            // this isnt going to work since its strongly typed. need a new way to switch between single/multi player
             if (play_type)
             {
-                Robot playerTwo = new Robot();
+                Robot playerTwo = (Robot) this.playerTwo;
+                Console.WriteLine("Player Two is a Robot");
             }
             else
             {
-                Human playerTwo = new Human();
+                Human playerTwo = (Human) this.playerTwo;
+                Console.WriteLine("Player Two is a Human");
             }
-            while (this.playerOne.score < 2 && playerTwo.score < 2) ;
+            while (this.playerOne.score < 2 && playerTwo.score < 2)
+            {
+                var winner = this.CompareGestures(this.playerOne.ChooseGesture(), this.playerTwo.ChooseGesture());
+                if (winner == "Player 1")
+                {
+                    this.playerOne.score++;
+                    Console.WriteLine("This round is won by Player One!!");
+                }
+                else if (winner == "Player 2")
+                {
+                    this.playerTwo.score++;
+                    Console.WriteLine("This round is won by Player Two!!");
+                }
+                else
+                {
+                    Console.WriteLine("This round was a tie!!");
+                }
+            };
 
         }
 
@@ -91,6 +112,19 @@ namespace RPSLS_CS
 
 
         }
+
+        public void DisplayWinner()
+        {
+            if (this.playerOne.score > this.playerTwo.score)
+            {
+                Console.WriteLine("Player One Wins the Game!!");
+            }
+            else
+            {
+                Console.WriteLine("Player Two Wins the Game!!");
+            }
+        }
+
     }   
    
 }
